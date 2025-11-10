@@ -1,1 +1,1 @@
-# Knights-Travails
+This is the tenth project of Javascript curriculum through The Odin Project, Knight Travails, where knowledge of search algorithims are solidified.

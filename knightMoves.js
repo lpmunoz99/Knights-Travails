@@ -1,5 +1,5 @@
 export function knight(){
-
+ 
     const moves = [
         [2, 1],
         [1, 2],
@@ -39,24 +39,29 @@ export function knight(){
         while(queue.length !== 0){
             const current = queue.shift();
             if(current[0] === end[0] && current[1] === end[1]){
-                let position = end.toString();
-                while(position !== start.toString()){
-                    const arr = position.split(',').map(Number);
+                let position = JSON.stringify(end);
+                while(position !== JSON.stringify(start)){
+                    const arr = JSON.parse(position);
                     path.push(arr);
                     position = parents[position];
                 }
                 path.push(start);
                 path.reverse();
                 console.log(`You made it in ${path.length - 1} moves! Here's your path:`);
+                let i = 0;
+                while(i < path.length){
+                    console.log(path[i]);
+                    i++;
+                }
                 return path;
             }
             const currentMoves = edges(current);
 
             currentMoves.forEach(element=> {
-                if(!visited.includes(element.toString())){
-                    visited.push(element.toString());
+                if(!visited.includes(JSON.stringify(element))){
+                    visited.push(JSON.stringify(element));
                     queue.push(element);
-                    parents[element.toString()] = current.toString();
+                    parents[JSON.stringify(element)] = JSON.stringify(current);
                 }
             });
         }
